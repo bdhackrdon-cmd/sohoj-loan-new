@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>সহজ লোন | Loan Application</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><div class="brand">সহজ লোন</div><nav><a href="#apply">আবেদন</a><a href="#status">স্ট্যাটাস</a><a href="#admin">Admin</a></nav></header>
+<main>
+<section class="hero"><div><span class="pill">৫,০০০ — ২০,০০০ টাকা</span><h1>লোনের জন্য অনলাইনে আবেদন করুন</h1><p>আপনার তথ্য জমা দিন। অনুমোদিত staff প্রয়োজনীয় যাচাই করে সিদ্ধান্ত নেবে।</p><a class="btn" href="#apply">আবেদন শুরু করুন</a></div></section>
+
+<section id="apply" class="section"><h2>লোন আবেদন</h2><form id="applyForm" class="card formgrid">
+<div><label>পূর্ণ নাম *</label><input name="name" required></div><div><label>মোবাইল *</label><input name="phone" required></div>
+<div><label>ই-মেইল</label><input name="email" type="email"></div><div><label>NID *</label><input name="nid" required></div>
+<div class="wide"><label>ঠিকানা *</label><textarea name="address" required></textarea></div>
+<div><label>লোনের পরিমাণ *</label><select name="amount" id="amount" required><option value="">নির্বাচন</option><option>5000</option><option>7500</option><option>10000</option><option>12500</option><option>15000</option><option>17500</option><option>20000</option></select></div>
+<div><label>উদ্দেশ্য *</label><select name="purpose" required><option value="">নির্বাচন</option><option>ব্যবসা</option><option>শিক্ষা</option><option>চিকিৎসা</option><option>জরুরি খরচ</option><option>অন্যান্য</option></select></div>
+<div><label>মাসিক আয়</label><input name="income" type="number" min="0"></div><div><label>কাজ/ব্যবসা</label><input name="work"></div>
+<div class="wide fee">
+<b>অগ্রিম ফি:</b> <span id="fee">পরিমাণ নির্বাচন করুন</span>
+<div class="paybox"><b>বিকাশ নম্বর:</b> <span class="bkash">01973789345</span><br>
+<small>আবেদন অনুমোদনের আগে প্রযোজ্য ফি/চার্জের পরিমাণ, কারণ ও শর্ত চুক্তিতে দেখে নিন। পেমেন্ট করলে Transaction ID সংরক্ষণ করুন।</small></div>
+</div>
+<div class="wide">
+<label>বিকাশ Transaction ID (পেমেন্ট হয়ে থাকলে)</label><input name="payment_txn" placeholder="যেমন: 8A1B2C3D4E5F">
+<label class="check"><input type="checkbox" required> আমি তথ্য যাচাই ও প্রয়োজনীয় data processing-এ সম্মত।</label>
+<label class="check"><input type="checkbox" required> আমি প্রযোজ্য ফি/চার্জ, ঋণের শর্ত এবং repayment schedule দেখে সম্মতি দেব।</label>
+<button class="btn" type="submit">আবেদন জমা দিন</button></div>
+</form></section>
+
+<section id="status" class="section"><h2>আবেদনের স্ট্যাটাস</h2><div class="card inline"><input id="statusId" placeholder="যেমন LN-..."><button class="btn" onclick="checkStatus()">চেক করুন</button></div><div id="statusResult"></div></section>
+
+<section id="admin" class="section"><h2>Admin Portal</h2><div id="loginBox" class="card"><form id="loginForm" class="inline"><input name="email" type="email" placeholder="Admin email" required><input name="password" type="password" placeholder="Password" required><button class="btn">Login</button></form></div><div id="adminBox" class="hidden"><div class="adminbar"><b>Applications</b><button class="btn secondary" onclick="logout()">Logout</button></div><div class="filters"><button onclick="loadApps()">সব</button><button onclick="loadApps('pending')">Pending</button><button onclick="loadApps('approved')">Approved</button><button onclick="loadApps('rejected')">Rejected</button></div><div class="tablewrap"><table><thead><tr><th>ID</th><th>Applicant</th><th>Amount</th><th>Status</th><th></th></tr></thead><tbody id="rows"></tbody></table></div></div></section>
+</main>
+
+<div id="drawer" class="overlay hidden"><div class="drawer"><button class="close" onclick="closeDrawer()">×</button><div id="detail"></div></div></div>
+<footer>© সহজ লোন · Privacy · Terms · Contact</footer>
+<script src="/app.js"></script>
+</body></html>
